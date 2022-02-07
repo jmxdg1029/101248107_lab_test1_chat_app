@@ -1,0 +1,34 @@
+{
+  "name": "101248107_lab_test1_chat_app",
+  "version": "1.0.0",
+  "description": "101248107_lab_test1_chat_app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmxdg1029/101248107_lab_test1_chat_app.git"
+  },
+  "keywords":[
+    "mongoose",
+    "mongodb",
+    "express",
+    "REST",
+    "API"
+  ],
+  "author": "John Michael De Guzman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmxdg1029/101248107_lab_test1_chat_app/issues"
+  },
+  "homepage": "https://github.com/jmxdg1029/101248107_lab_test1_chat_app#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
