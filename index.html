@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Chat App</title>
+    </head>
+
+    <body>
+        <div id = "error-container"></div>
+        <input id = "name" type="text" name="name" value="" 
+            placeholder="Enter your name!">
+        <button type="button" name="button" onclick="setUsername()">
+            Send!
+        </button>
+
+        <input id = "room" type="text" name="room" value="" 
+            placeholder="Enter room name!">
+        <button type="button" name="button" onclick="joinRoom()">
+            Join Room!
+        </button>
+
+        <input id = "message" type="text" name="message" value="" 
+        placeholder="Enter message to send!">
+        <button type="button" name="button" onclick="sendMessage()">
+            Send Message!
+        </button>
+
+        <div id="message-container">
+
+        </div>
+    </body>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const client = io()
+
+        client.emit('message',{name:'John Michael'})
+
+        client.on('welcome', (data) => {
+            console.log(data)
+            document.getElementById('message-container').innerHTML +=
+                '<div>' + data + '</div>'
+        })
+
+        client.on('newMessage',(message) => {
+            document.getElementById('message-container').innerHTML +=
+            '<div>' + message + '</div>'
+        })
+
+        function setUsername(){
+            client.emit('newUser',document.getElementById('name').value)
+        }
+
+        function joinRoom(){
+            client.emit('joinroom',document.getElementById('room').value)
+        }
+
+        function sendMessage(){
+            client.emit('message',document.getElementById('message').value)
+        }
+    </script>
+</html>

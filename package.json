@@ -2,16 +2,16 @@
   "name": "101248107_lab_test1_chat_app",
   "version": "1.0.0",
   "description": "101248107_lab_test1_chat_app",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"nodemon index.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jmxdg1029/101248107_lab_test1_chat_app.git"
   },
-  "keywords":[
+  "keywords": [
     "mongoose",
     "mongodb",
     "express",
@@ -25,8 +25,10 @@
   },
   "homepage": "https://github.com/jmxdg1029/101248107_lab_test1_chat_app#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.2",
-    "mongoose": "^6.2.0"
+    "mongoose": "^6.2.0",
+    "socket.io": "^4.4.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
