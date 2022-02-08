@@ -6,11 +6,7 @@
 
     <body>
         <div id = "error-container"></div>
-        <input id = "name" type="text" name="name" value="" 
-            placeholder="Enter your name!">
-        <button type="button" name="button" onclick="setUsername()">
-            Send!
-        </button>
+       
 
         <input id = "room" type="text" name="room" value="" 
             placeholder="Enter room name!">
@@ -46,12 +42,10 @@
             '<div>' + message + '</div>'
         })
 
-        function setUsername(){
-            client.emit('newUser',document.getElementById('name').value)
-        }
-
         function joinRoom(){
             client.emit('joinroom',document.getElementById('room').value)
+            document.getElementById('message-container').innerHTML +=
+            '<div>~~Room Joined '+document.getElementById('room').value+' ~~</div>'
         }
 
         function sendMessage(){

@@ -1,15 +1,9 @@
 const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
-    name:{
-        typ:String
-    },
-    username:{
-        type:String
-    },
-    password:{
-        type:String
-    }
+    name:String,
+    username:String,
+    password:String
 })
 
 UserSchema.post('init', (doc) => {

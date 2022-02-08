@@ -5,15 +5,13 @@
     </head>
 
     <body>
-        <h1>Sign Up Page</h1>
+        <h1>Login Page</h1>
         <div id = "error-container"></div>
-        Name:<input id = "name" type="text" name="name" value="" 
-            placeholder="Enter your name!">
         Username:<input id = "username" type="text" name="room" value="" 
             placeholder="Username">    
         password:<input id = "password" type="password" name="message" value="" 
             placeholder="Password">
-        <button type="button" name="button" onclick="setUser()">
+        <button type="button" name="button" onclick="login()">
             Sign Up!
         </button>
 
@@ -27,14 +25,10 @@
         const client = io()
 
 
-        function setUser(){
-            client.emit('newUser',
-            document.getElementById('name').value,
+        function login(){
+            client.emit('login',
             document.getElementById('username').value,
             document.getElementById('password').value)
-
-            document.getElementById('message-container').innerHTML +=
-                '<div> You have Signed Up! Welcome '+ document.getElementById('name').value +'</div>'
         }
     </script>
 </html>
