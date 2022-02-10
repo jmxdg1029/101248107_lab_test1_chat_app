@@ -2,7 +2,7 @@ const app = require('express')()
 const http = require('http').createServer(app)
 const cors = require('cors')
 const express = require('express')
-const res = require('express/lib/response')
+const server = require('http').Server(app)
 const PORT = 3000
 const io = require('socket.io')(http)
 const mongoose = require('mongoose');
@@ -52,13 +52,8 @@ io.on('connection', (socket) => {
 
     socket.on('message',(data) => {
         console.log(data) 
-
-        //helps commicate too all sockets that are connected
-        //(all clients connected to lobby)
-        //io.socket.emit('newMessage', data)
-        //socket.broadcast.emit('newMessage',data)
         io.to(roomName).emit('newMessage',data)
-        //socket.to(roomName).broadcast.emit('newMessage', data )
+       
     })
 
     //Sign Up Page
@@ -76,16 +71,16 @@ io.on('connection', (socket) => {
     //Login Page
     socket.on('login', (username, password) => {
         User.findOne({username: username, password: password}, function(err,user) {
-            if(err){
-                console.log(err)
+            if(err || !user){
+                console.log('USER NOT FOUND')
+                console.log(socket.emit)
+                socket.emit('login', false)
+                return false;               
             }
-            if(!user){
-                return console.log('user not found')
-            }
-
-            console.log('user FOUND!')
-        })
-         
+            console.log('USER FOUNDDD')
+            socket.emit('chat', true)
+           return true;   
+        })   
     })
     
 
